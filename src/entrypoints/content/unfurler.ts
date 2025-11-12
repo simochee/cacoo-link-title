@@ -13,13 +13,21 @@ export const unfurler = async (el: HTMLAnchorElement) => {
 	const diagram = await client<CacooDiagram>(
 		`/api/v1/diagrams/${encodeURIComponent(parsed.diagramId)}.json`,
 	);
-	const sheet =
-		parsed.sheetId && diagram.sheets.find((s) => s.uid === parsed.sheetId);
+	const sheet = diagram.sheets.find((s) => s.uid === parsed.sheetId);
 
-	let title = diagram.title;
+	let title = "";
+
+	title += diagram.title;
 
 	if (diagram.folderName) {
 		title = `${diagram.folderName} / ${title}`;
+	}
+
+	if (parsed.shapeId) {
+		title = `Shape in ${title}`;
+	}
+	if (parsed.commentId) {
+		title = `Comment on ${title}`;
 	}
 
 	title = `[${diagram.organizationName}] ${title}`;

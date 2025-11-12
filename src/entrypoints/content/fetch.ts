@@ -6,7 +6,7 @@ const inFlightRequests = new Map<string, Promise<unknown>>();
 
 export const client = async <T>(
 	pathname: `/api/${string}`,
-	ttl = 3 * 60 * 1000,
+	ttl = 3 * 60 * 1000 * 0,
 ): Promise<T> => {
 	const { apiKey } = await settings.getValue();
 	if (!apiKey) {
