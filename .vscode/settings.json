@@ -4,5 +4,6 @@
 			"text": "Always in English. Use conventional commit message format."
 		}
 	],
-	"typescript.tsdk": "node_modules/typescript/lib"
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"typescript.preferences.autoImportSpecifierExcludeRegexes": ["^(node:)?os$"]
 }
